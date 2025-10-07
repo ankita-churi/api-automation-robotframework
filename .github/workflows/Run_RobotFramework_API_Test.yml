@@ -1,0 +1,56 @@
+name: Run_RobotFramework_API_Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment name'
+        default: 'prod'
+        required: true
+        type: string
+      tag:
+        description: 'Tag name'
+        default: 'regression'
+        required: true
+        type: string
+
+jobs:
+  api-test-automation-robot:
+    runs-on: windows-latest
+
+    steps:
+      - name: Clean up previous automation data
+        run: |
+          Remove-Item -Path $Env:GITHUB_WORKSPACE\* -Recurse -Force
+          
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        shell: cmd
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Robot Framework tests
+        shell: cmd
+        run: |
+          cd %GITHUB_WORKSPACE%
+          mkdir reports
+          robot --variable ENV:${{ inputs.environment }} -i ${{ inputs.tag }} -d reports --reporttitle ${{ inputs.environment }}ReportAPIAutomation tests
+          
+      - name: Upload Robot Framework report
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-test-report
+          path: reports
+          if-no-files-found: warn   
+
+
+
+        
