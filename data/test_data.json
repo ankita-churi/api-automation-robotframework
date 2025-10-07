@@ -1,0 +1,67 @@
+{
+  "test_cases": {
+    "TC01": {
+      "text": "Look at that crazy junglebunny!",
+      "fill_char": "*",
+      "expected": "Look at that crazy ***********!"
+    },
+    "TC02": {
+      "text": "this is some bad input",
+      "add": "bad",
+      "fill_char": "*",
+      "expected": "this is some *** input"
+    },
+    "TC03": {
+      "text": "Look at that crazy bunny",
+      "add": "crazy,bunny",
+      "fill_char": "*",
+      "expected": "Look at that ***** *****"
+    },
+    "TC04": {
+      "text": "Look at that crazy junglebunny",
+      "fill_text": "[censored]",
+      "expected": "Look at that crazy [censored]"
+    },
+    "TC05": {
+      "text": "Be careful not to prick your finger on the rose thorn",
+      "fill_char": "~",
+      "expected": "Be careful not to ~~~~~ your finger on the rose thorn"
+    },
+    "TC06": {
+      "text": "Hello, The quick brown fox jumps over the lazy dog again today",
+      "add": "quick,brown,fox,jumps,over,the,lazy,dog,again,today",
+      "fill_char": "_",
+      "expected": "Hello, ___ _____ _____ ___ _____ ____ ___ ____ ___ _____ _____"
+    },
+    "TC07": {
+      "text": "",
+      "expected": "No Input"
+    },
+    "TC08": {
+      "text": "this is some bad input",
+      "add": "2$",
+      "expected": "Invalid Characters in User Black List"
+    },
+    "TC09": {
+      "text": "Be careful not to prick your finger on the rose thorn",
+      "fill_text": "@",
+      "expected": "Invalid User Replacement Text"
+    },
+    "TC10": {
+      "text": "this is some bad input",
+      "fill_text": "this_is_way_too_long_for_limit",
+      "expected": "User Replacement Text Exceeds Limit of 20 Characters."
+    },
+    "TC11": {
+      "text": "this is some bad input",
+      "fill_char": "@",
+      "expected": "Invalid User Replacement Characters"
+    },
+    "TC12": {
+      "text": "Be careful not to prick your finger on the rose thorn"
+    },
+    "TC13": {
+      "text": "Look at that crazy bunny"
+    }
+  }
+}

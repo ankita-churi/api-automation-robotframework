@@ -1,0 +1,9 @@
+{
+  "ENV": "prod",
+  "BASE_URL": {
+    "purgomalum_dev": "https://dev.purgomalum.com",
+    "purgomalum_prod": "https://www.purgomalum.com",
+    "randomuser_dev": "https://dev.randomuser.me",
+    "randomuser_prod": "https://randomuser.me"
+  }
+}
